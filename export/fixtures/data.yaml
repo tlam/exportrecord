@@ -1,0 +1,117 @@
+- model: export.country
+  pk: 1
+  fields:
+    name: Canada
+- model: export.country
+  pk: 2
+  fields:
+    name: USA
+- model: export.country
+  pk: 3
+  fields:
+    name: Australia
+- model: export.country
+  pk: 4
+  fields:
+    name: Singapore
+- model: export.country
+  pk: 5
+  fields:
+    name: France
+- model: export.country
+  pk: 6
+  fields:
+    name: Gabon
+- model: export.country
+  pk: 7
+  fields:
+    name: Reunion
+
+- model: export.currency
+  pk: 1
+  fields:
+    code: EUR
+    country: 5
+- model: export.currency
+  pk: 2
+  fields:
+    code: USD
+    country: 2
+- model: export.currency
+  pk: 3
+  fields:
+    code: CAD
+    country: 1
+- model: export.currency
+  pk: 4
+  fields:
+    code: SGD
+    country: 4
+
+- model: export.buyer
+  pk: 1
+  fields:
+    name: Bricorama
+- model: export.buyer
+  pk: 2
+  fields:
+    name: SBTPS
+
+- model: export.supplier
+  pk: 1
+  fields:
+    name: Bestview Mingdu Marble Co. Ltd
+- model: export.supplier
+  pk: 2
+  fields:
+    name: THAI GERMAN
+
+- model: export.container
+  pk: 1
+  fields:
+    type: 20
+    quantity: 9
+- model: export.container
+  pk: 2
+  fields:
+    type: 20
+    quantity: 3
+- model: export.container
+  pk: 3
+  fields:
+    type: 40HC
+    quantity: 100
+
+- model: export.record
+  pk: 1
+  fields:
+    date: 2009-10-21
+    file_no: 1
+    supplier: 1
+    proforma_invoice: BS091021
+    container: [1]
+    order_confirm: N/A
+    payment_term: L30
+    currency: 2
+    amount: 5000
+    country: 6
+    shipment_date:
+    buyer: 1
+    note:
+
+- model: export.record
+  pk: 2
+  fields:
+    date: 2010-01-04
+    file_no: 2
+    supplier: 2
+    proforma_invoice: BM09/12/01
+    container: [2]
+    order_confirm: BM12.09.022
+    payment_term: L30
+    currency: 2
+    amount: '1882.50'
+    country: 7
+    shipment_date:
+    buyer: 2
+    note:
