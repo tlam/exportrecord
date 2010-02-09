@@ -1,5 +1,9 @@
+import locale
+
 from django.conf import settings
 from django.db import models
+
+locale.setlocale(locale.LC_ALL, '')
 
 class Country(models.Model):
     name = models.CharField(max_length=200)
@@ -89,3 +93,7 @@ class Record(models.Model):
 
     def container_quantity(self):
         return self.container.all()
+
+    def amount_format(self):
+        return locale.format('%.2f', self.amount, grouping=True)
+    amount_format.short_description = 'Amount'

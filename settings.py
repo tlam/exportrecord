@@ -79,6 +79,9 @@ SERIALIZATION_MODULES = {
     'yaml':  'django.core.serializers.pyyaml'
 }
 
+SESSION_COOKIE_AGE = 60 * 60              # Age of cookie: 1 hour
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True    # Sign out of session when browser is closed
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
