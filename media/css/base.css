@@ -1,0 +1,25 @@
+body {
+  font-family: 'Lucida Grande', Verdana, Arial, sans-serif;
+  font-size: 11px;
+  text-align: center;
+}
+ 
+#content {
+  width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+table, th, td {
+  border: 1px solid #EEE;
+  font-size: inherit;
+}
+
+th {
+  color: #666;
+}
+
+ul#containers {
+  list-style: none;
+  padding: 0;
+}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Export Records Results - Work in Progress</h2>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>File no</th>
+    <th>Supplier</th>
+    <th>Proforma Invoice</th>
+    <th>TC.Qty</th>
+    <th>Order Confirm</th>
+    <th>P.Term</th>
+    <th>CURR</th>
+    <th>Amount</th>
+    <th>Country</th>
+    <th>Shipment Date</th>
+    <th>Buyer</th>
+    <th>Note</th>
+  </tr>
+{% for record in records %}
+  <tr>
+    <td><a href="">{{ record.date }}</a></td>
+    <td>{{ record.file_no }}</td>
+    <td>{{ record.supplier }}</td>
+    <td>
+    {% if record.proforma_invoice_file %}
+      <a href="{{ MEDIA_URL }}{{ record.proforma_invoice_file }}">{{ record.proforma_invoice }}</a>
+    {% else %}
+      {{ record.proforma_invoice }}
+    {% endif %}
+    </td>
+    <td>
+      <ul id="containers">
+      {% for container in record.container.all %}
+        <li>{{ container }}</li>
+      {% endfor %}
+      </ul>
+    </td>
+    <td>{{ record.order_confirm }}</td>
+    <td>{{ record.payment_term }}</td>
+    <td>{{ record.currency }}</td>
+    <td>{{ record.amount_format }}</td>
+    <td>{{ record.country }}</td>
+    <td>{{ record.shipment_date }}</td>
+    <td>{{ record.buyer }}</td>
+    <td>{{ record.note }}</td>
+  </tr>
+{% endfor %}
+</table>
+{% endblock %}
