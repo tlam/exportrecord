@@ -62,12 +62,12 @@ class Container(models.Model):
 class Record(models.Model):
 
     PAYMENT_CHOICES = (
-        ('LS', 'L/C at Sight'),
-        ('L30', 'L/C at 30 days'),
-        ('L60', 'L/C at 60 days'),
-        ('L90', 'L/C at 90 days'),
-        ('L120', 'L/C at 120 days'),
-        ('TT', 'T/T'),
+        ('LS', 'L/C ST'),
+        ('L30', 'L/C 30'),
+        ('L60', 'L/C 60'),
+        ('L90', 'L/C 90'),
+        ('L120', 'L/C 120'),
+        ('TT', 'TT'),
     )
 
     date = models.DateField()
@@ -76,8 +76,8 @@ class Record(models.Model):
     proforma_invoice = models.CharField(max_length=100)  # proforma invoice number
     container = models.ManyToManyField(Container)
     order_confirm = models.CharField(max_length=100, null=True, blank=True)
-    payment_term = models.CharField(max_length=4, choices=PAYMENT_CHOICES)
-    currency = models.ForeignKey(Currency)
+    payment_term = models.CharField(max_length=4, choices=PAYMENT_CHOICES, verbose_name='P.Term')
+    currency = models.ForeignKey(Currency, verbose_name='CURR')
     amount = models.DecimalField(max_digits=15, decimal_places=2)
     country = models.ForeignKey(Country)
     shipment_date = models.DateField(null=True, blank=True)
@@ -91,9 +91,10 @@ class Record(models.Model):
     def __unicode__(self):
         return '%s - %s' % (self.date, self.supplier)
 
-    def container_quantity(self):
-        return self.container.all()
-
     def amount_format(self):
         return locale.format('%.2f', self.amount, grouping=True)
     amount_format.short_description = 'Amount'
+
+    def container_quantity(self):
+        return self.container.all()
+    container_quantity.short_description = 'TC.Qty'
