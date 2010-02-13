@@ -1,8 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Export Records Results - Work in Progress</h2>
+<h2 id="home"><a href="{% url home %}">Export Records Results - Work in Progress</a></h2>
 
+<form action="/" method="get">
+  <input type="text" name="q" />
+  <input type="submit" value="Search" />
+  <a href="" id="advanced-search">Advanced Search</a>
+  <div id="select-columns">
+    <h4>Select columns to display</h4>
+    <input type="checkbox" name="amount" />Amount<br />
+    <input type="checkbox" name="buyer" />Buyer<br />
+    <input type="checkbox" name="supplier" />Supplier<br />
+  </div>
+</form>
+
+{% if records %}
 <table>
   <tr>
     <th>Date</th>
@@ -49,4 +62,7 @@
   </tr>
 {% endfor %}
 </table>
+{% else %}
+<h4>No results found</h4>
+{% endif %}
 {% endblock %}
