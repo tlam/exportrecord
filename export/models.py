@@ -1,6 +1,7 @@
 import locale
 
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.db import models
 
 locale.setlocale(locale.LC_ALL, '')
@@ -57,7 +58,13 @@ class Container(models.Model):
         ordering = ['type', 'quantity']
 
     def __unicode__(self):
-        return '%i x %s' % (self.quantity, self.type)
+        return u'%ix%s' % (self.quantity, self.type)
+
+class Forwarder(models.Model):
+    name = models.CharField(max_length=40)
+
+    def __unicode__(self):
+        return self.name
 
 class Record(models.Model):
 
@@ -82,6 +89,7 @@ class Record(models.Model):
     country = models.ForeignKey(Country)
     shipment_date = models.DateField(null=True, blank=True)
     buyer = models.ForeignKey(Buyer)
+    forwarder = models.ForeignKey(Forwarder, null=True, blank=True)
     note = models.TextField(null=True, blank=True)
     proforma_invoice_file = models.FileField(upload_to='proforma_invoice', null=True, blank=True)
 
@@ -89,7 +97,7 @@ class Record(models.Model):
         ordering = ['file_no']
 
     def __unicode__(self):
-        return '%s - %s' % (self.date, self.supplier)
+        return u'%s - %s' % (self.date, self.supplier)
 
     def amount_format(self):
         return locale.format('%.2f', self.amount, grouping=True)

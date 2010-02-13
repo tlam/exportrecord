@@ -21,7 +21,7 @@
   </tr>
 {% for record in records %}
   <tr>
-    <td><a href="">{{ record.date }}</a></td>
+    <td><a href="{% url admin:export_record_changelist %}{{ record.id }}">{{ record.date }}</a></td>
     <td>{{ record.file_no }}</td>
     <td>{{ record.supplier }}</td>
     <td>

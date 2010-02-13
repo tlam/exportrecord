@@ -90,6 +90,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'export',
     'south',
+    'utils',
 )
 
 try:
