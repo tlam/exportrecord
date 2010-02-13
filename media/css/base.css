@@ -49,3 +49,7 @@ ul#containers {
   margin: 0;
   padding-left: 5px;
 }
+
+.date, .shipment-date {
+  width: 68px;
+}

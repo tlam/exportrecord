@@ -29,8 +29,8 @@
       <th>CURR</th>
       <th class="amount">Amount</th>
       <th>Country</th>
-      <th>Shipment Date</th>
-      <th>Note</th>
+      <th class="shipment-date">Shipment Date</th>
+      <th class="note">Note</th>
     </tr>
   {% for record in records %}
     <tr>
@@ -57,8 +57,8 @@
       <td>{{ record.currency }}</td>
       <td class="amount">{{ record.amount_format }}</td>
       <td>{{ record.country }}</td>
-      <td>{{ record.shipment_date }}</td>
-      <td>{{ record.note }}</td>
+      <td class="shipment-date">{{ record.shipment_date }}</td>
+      <td class="note">{{ record.note }}</td>
     </tr>
   {% endfor %}
   </table>
