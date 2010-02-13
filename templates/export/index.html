@@ -1,68 +1,68 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2 id="home"><a href="{% url home %}">Export Records Results - Work in Progress</a></h2>
+<h2 id="home"><a href="{% url home %}">Export Records Results</a></h2>
 
 <form action="/" method="get">
   <input type="text" name="q" />
   <input type="submit" value="Search" />
-  <a href="" id="advanced-search">Advanced Search</a>
+  <a href="" id="display-columns">Display Columns</a>
   <div id="select-columns">
     <h4>Select columns to display</h4>
-    <input type="checkbox" name="amount" />Amount<br />
-    <input type="checkbox" name="buyer" />Buyer<br />
-    <input type="checkbox" name="supplier" />Supplier<br />
+    <input type="checkbox" name="amount" class="column-display" />Amount<br />
+    <input type="checkbox" name="buyer" class="column-display" />Buyer<br />
+    <input type="checkbox" name="supplier" class="column-display" />Supplier<br />
   </div>
 </form>
 
 {% if records %}
-<table>
-  <tr>
-    <th>Date</th>
-    <th>File no</th>
-    <th>Supplier</th>
-    <th>Proforma Invoice</th>
-    <th>TC.Qty</th>
-    <th>Order Confirm</th>
-    <th>P.Term</th>
-    <th>CURR</th>
-    <th>Amount</th>
-    <th>Country</th>
-    <th>Shipment Date</th>
-    <th>Buyer</th>
-    <th>Note</th>
-  </tr>
-{% for record in records %}
-  <tr>
-    <td><a href="{% url admin:export_record_changelist %}{{ record.id }}">{{ record.date }}</a></td>
-    <td>{{ record.file_no }}</td>
-    <td>{{ record.supplier }}</td>
-    <td>
-    {% if record.proforma_invoice_file %}
-      <a href="{{ MEDIA_URL }}{{ record.proforma_invoice_file }}">{{ record.proforma_invoice }}</a>
-    {% else %}
-      {{ record.proforma_invoice }}
-    {% endif %}
-    </td>
-    <td>
-      <ul id="containers">
-      {% for container in record.container.all %}
-        <li>{{ container }}</li>
-      {% endfor %}
-      </ul>
-    </td>
-    <td>{{ record.order_confirm }}</td>
-    <td>{{ record.payment_term }}</td>
-    <td>{{ record.currency }}</td>
-    <td>{{ record.amount_format }}</td>
-    <td>{{ record.country }}</td>
-    <td>{{ record.shipment_date }}</td>
-    <td>{{ record.buyer }}</td>
-    <td>{{ record.note }}</td>
-  </tr>
-{% endfor %}
-</table>
+  <table>
+    <tr>
+      <th class="date">Date</th>
+      <th>File no</th>
+      <th class="buyer">Buyer</th>
+      <th class="supplier">Supplier</th>
+      <th>Proforma Invoice</th>
+      <th>TC.Qty</th>
+      <th>Order Confirm</th>
+      <th>P.Term</th>
+      <th>CURR</th>
+      <th class="amount">Amount</th>
+      <th>Country</th>
+      <th>Shipment Date</th>
+      <th>Note</th>
+    </tr>
+  {% for record in records %}
+    <tr>
+      <td class="date"><a href="{% url admin:export_record_changelist %}{{ record.id }}">{{ record.date }}</a></td>
+      <td>{{ record.file_no }}</td>
+      <td class="buyer">{{ record.buyer }}</td>
+      <td class="supplier">{{ record.supplier }}</td>
+      <td>
+      {% if record.proforma_invoice_file %}
+        <a href="{{ MEDIA_URL }}{{ record.proforma_invoice_file }}">{{ record.proforma_invoice }}</a>
+      {% else %}
+        {{ record.proforma_invoice }}
+      {% endif %}
+      </td>
+      <td>
+        <ul id="containers">
+        {% for container in record.container.all %}
+          <li>{{ container }}</li>
+        {% endfor %}
+        </ul>
+      </td>
+      <td>{{ record.order_confirm }}</td>
+      <td>{{ record.payment_term }}</td>
+      <td>{{ record.currency }}</td>
+      <td class="amount">{{ record.amount_format }}</td>
+      <td>{{ record.country }}</td>
+      <td>{{ record.shipment_date }}</td>
+      <td>{{ record.note }}</td>
+    </tr>
+  {% endfor %}
+  </table>
 {% else %}
-<h4>No results found</h4>
+  <h4>No results found</h4>
 {% endif %}
 {% endblock %}

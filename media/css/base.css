@@ -16,7 +16,13 @@ table, th, td {
   font-size: inherit;
 }
 
-h2, th {
+th, td {
+  padding: 2px 5px;
+  text-align: left;
+  vertical-align: top;
+}
+
+h2, h4, th {
   color: #666;
 }
 
