@@ -92,7 +92,6 @@ class Record(models.Model):
     buyer = models.ForeignKey(Buyer)
     forwarder = models.ForeignKey(Forwarder, null=True, blank=True)
     note = models.TextField(blank=True)
-    proforma_invoice_file = models.FileField(upload_to='proforma_invoice', null=True, blank=True)
 
     class Meta:
         ordering = ['file_no']
@@ -113,9 +112,5 @@ def invoice_file_name(instance, filename):
     return os.path.join('proforma_invoice', str(instance.record_id), filename)
 
 class ProformaInvoiceFile(models.Model):
-    #file = models.FileField(upload_to='proforma_invoice', null=True, blank=True)
     file = models.FileField(upload_to=invoice_file_name, null=True, blank=True)
     record = models.ForeignKey(Record)
-
-    #def __unicode__(self):
-    #    return u'%s' % os.path.basename(self.file.name)
