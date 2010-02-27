@@ -39,8 +39,11 @@
       <td class="buyer">{{ record.buyer }}</td>
       <td class="supplier">{{ record.supplier }}</td>
       <td>
-      {% if record.proforma_invoice_file %}
-        <a href="{{ MEDIA_URL }}{{ record.proforma_invoice_file }}">{{ record.proforma_invoice }}</a>
+      {% if record.proformainvoicefile_set.all %}
+        <b>{{ record.proforma_invoice }}:</b>
+        {% for f in record.proformainvoicefile_set.all %}
+          <a href="{{ MEDIA_URL }}{{ f.file }}">{{ f }}</a>
+        {% endfor %}
       {% else %}
         {{ record.proforma_invoice }}
       {% endif %}

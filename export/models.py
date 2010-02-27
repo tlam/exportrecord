@@ -114,3 +114,9 @@ def invoice_file_name(instance, filename):
 class ProformaInvoiceFile(models.Model):
     file = models.FileField(upload_to=invoice_file_name, null=True, blank=True)
     record = models.ForeignKey(Record)
+
+    def __unicode__(self):
+        if self.file:
+            return os.path.basename(self.file.path)
+        else:
+            return 'nothing'
