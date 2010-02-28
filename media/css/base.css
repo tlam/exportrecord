@@ -3,67 +3,40 @@ body {
   font-size: 11px;
   text-align: center;
 }
- 
-#content {
-  width: auto;
+
+a {
+  text-decoration: none;
+}
+
+#content, #header, #footer {
   margin: 0 auto;
+  overflow: auto;
   text-align: left;
+  width: auto;
 }
 
-table, th, td {
-  border: 1px solid #EEE;
-  border-collapse: collapse;
-  font-size: inherit;
+/* Header */
+#header h2 {
+  width: 300px;
 }
 
-table a {
-  color: #5B80B2;
+h2, #top-navigation {
+  float: left;
+  margin-top: 0;
+}
+
+#top-navigation a {
+  background: grey;
+  border: 1px solid black;
+  color: white;
+  display: inline-block;
   font-weight: bold;
-  text-decoration: none;
+  padding: 0.2em;
+  text-align: center;
+  width: 10em;
 }
 
-table a:hover {
-  color: #000080;
+#top-navigation a:hover {
+  background: #DAA520;
 }
 
-th, td {
-  padding: 2px 4px;
-  text-align: left;
-  vertical-align: top;
-}
-
-h2, h4, th {
-  color: #666;
-}
-
-h2#home a {
-  text-decoration: none;
-}
-
-h2#home a:visited {
-  color: #666;
-}
-
-ul#containers {
-  list-style: none;
-  padding: 0;
-}
-
-#select-columns {
-  border: 1px solid #EEE;
-  display: none;
-  width: 400px;
-}
-
-#select-columns h4 {
-  margin: 0;
-  padding-left: 5px;
-}
-
-.date {
-  width: 74px;
-}
-
-.shipment-date {
-  width: 68px;
-}

@@ -7,7 +7,7 @@ from export.models import Record
  
 def index(request):
     if not request.user.is_authenticated():
-        return redirect('home-login')
+        return redirect('export:login')
 
     q = ''
     if 'q' in request.GET:
@@ -38,7 +38,7 @@ def home_login(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return redirect('home')
+                return redirect('export:home')
             else:
                 # Return a 'disabled account' error message
                 print 'disabled account'

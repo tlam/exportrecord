@@ -1,0 +1,48 @@
+table, th, td {
+  border: 1px solid #EEE;
+  border-collapse: collapse;
+  font-size: inherit;
+}
+
+table a {
+  color: #5B80B2;
+  font-weight: bold;
+}
+
+table a:hover {
+  color: #000080;
+}
+
+th, td {
+  padding: 2px 4px;
+  text-align: left;
+  vertical-align: top;
+}
+
+h2, h4, th {
+  color: #666;
+}
+
+ul#containers {
+  list-style: none;
+  padding: 0;
+}
+
+#select-columns {
+  border: 1px solid #EEE;
+  display: none;
+  width: 400px;
+}
+
+#select-columns h4 {
+  margin: 0;
+  padding-left: 5px;
+}
+
+.date {
+  width: 74px;
+}
+
+.shipment-date {
+  width: 68px;
+}

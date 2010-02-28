@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2 id="home"><a href="{% url home %}">Export Records Results</a></h2>
 
 <form action="/" method="get">
   <input type="text" name="q" />
@@ -30,6 +29,7 @@
       <th class="amount">Amount</th>
       <th>Country</th>
       <th class="shipment-date">Shipment Date</th>
+      <th>Forwarder</th>
       <th class="note">Note</th>
     </tr>
   {% for record in records %}
@@ -61,6 +61,7 @@
       <td class="amount">{{ record.amount_format }}</td>
       <td>{{ record.country }}</td>
       <td class="shipment-date">{{ record.shipment_date }}</td>
+      <td>{{ record.forwarder }}</td>
       <td class="note">{{ record.note }}</td>
     </tr>
   {% endfor %}

@@ -5,6 +5,8 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
 
+from clients.models import Client
+
 locale.setlocale(locale.LC_ALL, '')
 
 class Country(models.Model):
@@ -91,6 +93,7 @@ class Record(models.Model):
     shipment_date = models.DateField(null=True, blank=True)
     buyer = models.ForeignKey(Buyer)
     forwarder = models.ForeignKey(Forwarder, null=True, blank=True)
+    client = models.ForeignKey(Client, null=True, blank=True)
     note = models.TextField(blank=True)
 
     class Meta:

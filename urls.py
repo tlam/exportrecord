@@ -14,7 +14,8 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls), name='admin'),
-    url(r'^', include('export.urls'), name='records'),
+    url(r'^', include('export.urls', namespace='export'), name='records'),
+    url(r'^clients/', include('clients.urls', namespace='clients'), name='clients'),
 )
 
 if settings.DEBUG:

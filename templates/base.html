@@ -1,14 +1,24 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"> 
-    <title>Export Records Results</title> 
+    <title>Export Records</title> 
     <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/base.css" media="screen" />
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/results.css" media="screen" />
     <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script> 
     <script type="text/javascript" src="{{ MEDIA_URL }}js/export_record.js"></script> 
   </head>
   <body>
+  <div id="header">
+    <h2><a href="{% url export:home %}">Export Records - {% block page-header %}Results{% endblock %}</a></h2>
+    <div id="top-navigation">
+      <a href="{% url export:home %}">Results</a>
+      <a href="{% url clients:index %}">Clients</a>
+    </div>
+  </div>
   <div id="content">
     {% block content %}{% endblock %}
+  </div>
+  <div id="footer">
   </div>
   </body>
 </html>

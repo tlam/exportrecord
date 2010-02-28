@@ -1,6 +1,6 @@
 <h2>Login Page</h2>
  
-<form actions="/login/" method="post" id="login-form">
+<form actions="{% url export:login %}" method="post" id="login-form">
   <label for="id_username">Username:</label> <input type="text" name="username" id="id_username" />
   <label for="id_password">Password:</label> <input type="password" name="password" id="id_password" />
   <input type="submit" />
