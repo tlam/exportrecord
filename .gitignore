@@ -1,3 +1,4 @@
 *.pyc
 *.swp
 dev_settings.py
+media/proforma_invoice

@@ -1,0 +1,55 @@
+{% if records %}
+  <table>
+    <tr>
+      <th class="date">Date</th>
+      <th>File no</th>
+      <th class="buyer">Buyer</th>
+      <th class="supplier">Supplier</th>
+      <th>Proforma Invoice</th>
+      <th>TC.Qty</th>
+      <th>Order Confirm</th>
+      <th>P.Term</th>
+      <th>CURR</th>
+      <th class="amount">Amount</th>
+      <th>Country</th>
+      <th class="shipment-date">Shipment Date</th>
+      <th>Forwarder</th>
+      <th class="note">Note</th>
+    </tr>
+  {% for record in records %}
+    <tr>
+      <td class="date"><a href="{% url admin:export_record_changelist %}{{ record.id }}">{{ record.date }}</a></td>
+      <td>{{ record.file_no }}</td>
+      <td class="buyer">{{ record.buyer }}</td>
+      <td class="supplier">{{ record.supplier }}</td>
+      <td>
+      {% if record.proformainvoicefile_set.all %}
+        <b>{{ record.proforma_invoice }}:</b>
+        {% for f in record.proformainvoicefile_set.all %}
+          <a href="{{ MEDIA_URL }}{{ f.file }}">{{ f }}</a>
+        {% endfor %}
+      {% else %}
+        {{ record.proforma_invoice }}
+      {% endif %}
+      </td>
+      <td>
+        <ul id="containers">
+        {% for container in record.container.all %}
+          <li>{{ container }}</li>
+        {% endfor %}
+        </ul>
+      </td>
+      <td>{{ record.order_confirm }}</td>
+      <td>{{ record.payment_term }}</td>
+      <td>{{ record.currency }}</td>
+      <td class="amount">{{ record.amount_format }}</td>
+      <td>{{ record.country }}</td>
+      <td class="shipment-date">{{ record.shipment_date }}</td>
+      <td>{{ record.forwarder }}</td>
+      <td class="note">{{ record.note }}</td>
+    </tr>
+  {% endfor %}
+  </table>
+{% else %}
+  <h4>No results found</h4>
+{% endif %}

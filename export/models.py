@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from django.db import models
 
 from clients.models import Client
+from utils.amount import decimal_separator
 
 locale.setlocale(locale.LC_ALL, '')
 
@@ -45,6 +46,16 @@ class Supplier(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def total(self):
+        records = self.record_set.all()
+        currency = ''
+        total_amount = 0
+
+        for record in records:
+            currency = record.currency
+            total_amount += record.amount
+        return '%s %s' % (currency, decimal_separator(total_amount))
 
 class Container(models.Model):
     CONTAINER_CHOICES = (
@@ -103,7 +114,7 @@ class Record(models.Model):
         return u'%s - %s' % (self.date, self.supplier)
 
     def amount_format(self):
-        return locale.format('%.2f', self.amount, grouping=True)
+        return decimal_separator(self.amount)
     amount_format.short_description = 'Amount'
 
     def container_quantity(self):
