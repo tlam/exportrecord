@@ -16,13 +16,12 @@ def index(request):
         context_instance=RequestContext(request)
     )
 
-'''
 def detail(request, slug):
-    client = get_object_or_404(Client, slug=slug)
-    records = client.record_set.order_by('file_no')
+    supplier = get_object_or_404(Supplier, slug=slug)
+    records = supplier.record_set.order_by('file_no')
 
     data = {
-        'client': client,
+        'client': supplier,
         'records': records
     }
 
@@ -31,4 +30,3 @@ def detail(request, slug):
         data,
         context_instance=RequestContext(request)
     )
-'''
