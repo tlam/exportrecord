@@ -64,6 +64,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'export.middleware.RequireLoginMiddleware',
 )
 
 ROOT_URLCONF = 'exportrecord.urls'
