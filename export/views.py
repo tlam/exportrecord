@@ -6,9 +6,6 @@ from django.template import RequestContext
 from export.models import Record
  
 def index(request):
-    if not request.user.is_authenticated():
-        return redirect('export:login')
-
     q = ''
     if 'q' in request.GET:
         q = request.GET['q']
