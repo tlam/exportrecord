@@ -10,6 +10,10 @@ th, td {
   vertical-align: top;
 }
 
+td {
+  line-height: 1.6em;
+}
+
 h2, h4, th {
   color: #666;
 }
