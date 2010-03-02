@@ -14,7 +14,7 @@ Suppliers
 {% for supplier in suppliers %}
   <tr>
     <td><a href="{% url suppliers:detail supplier.slug %}">{{ supplier }}</a></td>
-    <td>{{ supplier.record_set.currency }}{{ supplier.total }}</td>
+    <td>{{ supplier.record_set.currency }}{{ supplier.total.currency }} {{ supplier.total.amount }}</td>
   </tr>
 {% endfor %}
 </table>

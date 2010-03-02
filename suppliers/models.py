@@ -20,4 +20,8 @@ class Supplier(models.Model):
         for record in records:
             currency = record.currency
             total_amount += record.amount
-        return '%s %s' % (currency, decimal_separator(total_amount))
+        #return '%s %s' % (currency, decimal_separator(total_amount))
+        return {
+            'currency': currency, 
+            'amount': decimal_separator(total_amount)
+        }

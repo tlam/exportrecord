@@ -19,14 +19,16 @@ def index(request):
 def detail(request, slug):
     supplier = get_object_or_404(Supplier, slug=slug)
     records = supplier.record_set.order_by('file_no')
+    total = supplier.total()
 
     data = {
-        'client': supplier,
-        'records': records
+        'records': records,
+        'supplier': supplier,
+        'total': total
     }
 
     return render_to_response(
-        'clients/detail.html',
+        'suppliers/detail.html',
         data,
         context_instance=RequestContext(request)
     )

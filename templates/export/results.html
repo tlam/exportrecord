@@ -49,6 +49,20 @@
       <td class="note">{{ record.note }}</td>
     </tr>
   {% endfor %}
+  {% if total %}
+    <tr class="total-row">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="total">Total:</td>
+      <td class="total">{{ supplier.total.currency }}</td>
+      <td class="total">{{ supplier.total.amount }}</td>
+    </tr>
+  {% endif %}
   </table>
 {% else %}
   <h4>No results found</h4>
