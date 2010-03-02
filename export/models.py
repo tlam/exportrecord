@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from django.db import models
 
 from clients.models import Client
+from suppliers.models import Supplier
 from utils.amount import decimal_separator
 
 locale.setlocale(locale.LC_ALL, '')
@@ -37,25 +38,6 @@ class Buyer(models.Model):
 
     def __unicode__(self):
         return self.name
-
-class Supplier(models.Model):
-    name = models.CharField(max_length=200)
-
-    class Meta:
-        ordering = ['name']
-
-    def __unicode__(self):
-        return self.name
-
-    def total(self):
-        records = self.record_set.all()
-        currency = ''
-        total_amount = 0
-
-        for record in records:
-            currency = record.currency
-            total_amount += record.amount
-        return '%s %s' % (currency, decimal_separator(total_amount))
 
 class Container(models.Model):
     CONTAINER_CHOICES = (
@@ -93,7 +75,7 @@ class Record(models.Model):
 
     date = models.DateField()
     file_no = models.IntegerField()
-    supplier = models.ForeignKey(Supplier)
+    supplier = models.ForeignKey(Supplier, null=True)
     proforma_invoice = models.CharField(max_length=100)  # proforma invoice number
     container = models.ManyToManyField(Container)
     order_confirm = models.CharField(max_length=100, blank=True)

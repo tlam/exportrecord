@@ -1,5 +1,7 @@
 from django.db import models
 
+from utils.amount import decimal_separator
+
 class Supplier(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(help_text='The slug is filled automatically from the name')
