@@ -74,7 +74,7 @@ class Record(models.Model):
     )
 
     date = models.DateField()
-    file_no = models.IntegerField()
+    file_no = models.CharField(max_length=100)
     supplier = models.ForeignKey(Supplier, null=True)
     proforma_invoice = models.CharField(max_length=100)  # proforma invoice number
     container = models.ManyToManyField(Container)
@@ -86,7 +86,7 @@ class Record(models.Model):
     shipment_date = models.DateField(null=True, blank=True)
     buyer = models.ForeignKey(Buyer)
     forwarder = models.ForeignKey(Forwarder, null=True, blank=True)
-    client = models.ForeignKey(Client, null=True, blank=True)
+    client = models.ForeignKey(Client)
     note = models.TextField(blank=True)
 
     class Meta:
