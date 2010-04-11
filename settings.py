@@ -83,6 +83,7 @@ SERIALIZATION_MODULES = {
 SESSION_COOKIE_AGE = 60 * 60              # Age of cookie: 1 hour
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True    # Sign out of session when browser is closed
 
+# The following order matters when testing migration with South 0.7
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -90,9 +91,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'clients',
+    'suppliers',
     'export',
     'south',
-    'suppliers',
     'utils',
 )
 
