@@ -50,9 +50,9 @@
       <td class="note">{{ record.note }}</td>
       <td>
       {% if record.payment_status %}
-        <img src="{{ MEDIA_URL }}admin/img/admin/icon-yes.gif" />
+        <img src="{{ ADMIN_MEDIA_PREFIX }}img/admin/icon-yes.gif" />
       {% else %}
-        <img src="{{ MEDIA_URL }}admin/img/admin/icon-no.gif" />
+        <img src="{{ ADMIN_MEDIA_PREFIX }}img/admin/icon-no.gif" />
       {% endif %}
       </td>
     </tr>
