@@ -11,6 +11,7 @@ from utils.amount import decimal_separator
 
 locale.setlocale(locale.LC_ALL, '')
 
+
 class Country(models.Model):
     name = models.CharField(max_length=200)
 
@@ -19,6 +20,7 @@ class Country(models.Model):
 
     def __unicode__(self):
         return self.name
+
 
 class Currency(models.Model):
     code = models.CharField(max_length=5)
@@ -30,6 +32,7 @@ class Currency(models.Model):
     def __unicode__(self):
         return self.code
 
+
 class Buyer(models.Model):
     name = models.CharField(max_length=200)
 
@@ -38,6 +41,7 @@ class Buyer(models.Model):
 
     def __unicode__(self):
         return self.name
+
 
 class Container(models.Model):
     CONTAINER_CHOICES = (
@@ -56,11 +60,13 @@ class Container(models.Model):
     def __unicode__(self):
         return u'%ix%s' % (self.quantity, self.type)
 
+
 class Forwarder(models.Model):
     name = models.CharField(max_length=40)
 
     def __unicode__(self):
         return self.name
+
 
 class Record(models.Model):
 
@@ -88,6 +94,7 @@ class Record(models.Model):
     forwarder = models.ForeignKey(Forwarder, null=True, blank=True)
     client = models.ForeignKey(Client)
     note = models.TextField(blank=True)
+    payment_status = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['file_no']

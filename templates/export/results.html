@@ -15,6 +15,7 @@
       <th class="shipment-date">Shipment Date</th>
       <th>Forwarder</th>
       <th class="note">Note</th>
+      <th>Payment Status</th>
     </tr>
   {% for record in records %}
     <tr>
@@ -47,10 +48,18 @@
       <td class="shipment-date">{{ record.shipment_date }}</td>
       <td>{{ record.forwarder }}</td>
       <td class="note">{{ record.note }}</td>
+      <td>
+      {% if record.payment_status %}
+        <img src="{{ MEDIA_URL }}admin/img/admin/icon-yes.gif" />
+      {% else %}
+        <img src="{{ MEDIA_URL }}admin/img/admin/icon-no.gif" />
+      {% endif %}
+      </td>
     </tr>
   {% endfor %}
   {% if total %}
     <tr class="total-row">
+      <td></td>
       <td></td>
       <td></td>
       <td></td>
