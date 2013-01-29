@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.db.models import Q
-from django.shortcuts import redirect, render_to_response
+from django.shortcuts import redirect, render
 from django.template import RequestContext
 
 from export.models import Record
@@ -21,10 +21,10 @@ def index(request):
         'records': records
     }   
 
-    return render_to_response(
+    return render(
+        request,
         'export/index.html',
         data,
-        context_instance=RequestContext(request)
     )   
  
 def home_login(request):
@@ -42,6 +42,9 @@ def home_login(request):
         else:
             # Return an 'invalid login' error message.
             print 'invalid account'
-    return render_to_response(
+
+    return render(
+        request,
         'export/login.html',
+        {},
     )   

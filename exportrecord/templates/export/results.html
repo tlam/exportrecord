@@ -27,7 +27,7 @@
       {% if record.proformainvoicefile_set.all %}
         <b>{{ record.proforma_invoice }}:</b>
         {% for f in record.proformainvoicefile_set.all %}
-          <a href="{{ MEDIA_URL }}{{ f.file }}">{{ f }}</a>
+          <a href="{{ STATIC_URL }}{{ f.file }}">{{ f }}</a>
         {% endfor %}
       {% else %}
         {{ record.proforma_invoice }}
@@ -50,9 +50,9 @@
       <td class="note">{{ record.note }}</td>
       <td>
       {% if record.payment_status %}
-        <img src="{{ ADMIN_MEDIA_PREFIX }}img/admin/icon-yes.gif" />
+        <img src="{{ STATIC_URL }}admin/img/icon-yes.gif" />
       {% else %}
-        <img src="{{ ADMIN_MEDIA_PREFIX }}img/admin/icon-no.gif" />
+        <img src="{{ STATIC_URL }}admin/img/icon-no.gif" />
       {% endif %}
       </td>
     </tr>
