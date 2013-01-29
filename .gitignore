@@ -1,4 +1,4 @@
 *.pyc
 *.swp
-dev_settings.py
-media/proforma_invoice
+local_settings.py
+exportrecord/media/proforma_invoice
