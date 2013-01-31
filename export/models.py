@@ -1,8 +1,6 @@
 import locale
 import os
 
-from django.conf import settings
-from django.core.urlresolvers import reverse
 from django.db import models
 
 from clients.models import Client
